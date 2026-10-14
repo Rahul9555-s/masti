@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narazgi Meter 🚨</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #ff4757;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .question {
+            margin-bottom: 25px;
+        }
+        .question p {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            background: #f1f2f6;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        label:hover {
+            background: #dfe4ea;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background: #ff6b81;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Malkin Narazgi Check! 🚨</h1>
+        <div class="subtitle">Ek chhota sa survey form, sirf Madam Ji ke liye...</div>
+
+        <!-- FormSubmit API use kar rahe hain. Niche apna email daalein! -->
+        <form action="https://formsubmit.co/rahul.bhirman57@gmail.com" method="POST">
+            
+            <!-- Taaki email me subject achha aaye -->
+            <input type="hidden" name="_subject" value="New Submission from Sonia Ji! 🌸">
+            
+            <!-- Success ke baad wapas dashboard par le jaane ke liye -->
+            <input type="hidden" name="_next" value="https://masti-lovat.vercel.app/">
+
+            <div class="question">
+                <p>1. Aaj aap subah se baat kyun nahi kar rahi hain?</p>
+                <label><input type="radio" name="Reason" value="Rahul ki galti hai" required> A) Pata nahi par galti pakka IT wale ki hi hai 🙄</label>
+                <label><input type="radio" name="Reason" value="Mood nahi hai"> B) Bas aivein hi, mood nahi hai 😒</label>
+                <label><input type="radio" name="Reason" value="Bhav kha rahi hu"> C) Thoda bhav kha rahi thi 💅</label>
+            </div>
+
+            <div class="question">
+                <p>2. Abhi aapka gussa (Anger Level) kitna hai?</p>
+                <label><input type="radio" name="AngerLevel" value="Volcano" required> A) Jwalamukhi (Volcano) fati padhi hai 🌋</label>
+                <label><input type="radio" name="AngerLevel" value="Chui-mui"> B) Chui-mui type ka gussa hai 🥺</label>
+                <label><input type="radio" name="AngerLevel" value="Pighal gayi"> C) Yeh form dekh kar pighal gayi hu 😊</label>
+            </div>
+
+            <div class="question">
+                <p>3. Sulah karne ki fees kya hogi?</p>
+                <label><input type="radio" name="TruceFee" value="Chocolate" required> A) Ek badi waali Chocolate 🍫</label>
+                <label><input type="radio" name="TruceFee" value="Sorry msg"> B) Ek lamba sa sorry wala message 💌</label>
+                <label><input type="radio" name="TruceFee" value="Maaf kiya"> C) Chalo maaf kiya (ehsaan yaad rakhna) 👑</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit & Claim Smile ✨</button>
+        </form>
+    </div>
+
+</body>
+</html>
