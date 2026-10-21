@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tumse Ek Baat Kehni Hai ❤️</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Georgia', serif; /* Elegant font */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Starry background effect */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: transparent;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .stars::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            opacity: 0.3;
+            animation: twinkle 5s infinite linear;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.5; }
+            100% { opacity: 0.2; }
+        }
+
+        .start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            transition: opacity 1s ease-out;
+        }
+
+        .start-btn {
+            background: transparent;
+            color: #ff4757;
+            border: 2px solid #ff4757;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .start-btn:hover {
+            background: #ff4757;
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 71, 87, 0.5);
+        }
+
+        .content {
+            z-index: 10;
+            max-width: 600px;
+            padding: 40px 20px;
+            text-align: center;
+            display: none; /* Hidden until button is clicked */
+        }
+
+        .line {
+            opacity: 0;
+            transform: translateY(20px);
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            color: #eaeaea;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ff4757;
+            margin-bottom: 50px;
+        }
+
+        /* Animation classes added via JS */
+        .fade-in {
+            animation: fadeInUp 2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Stars -->
+    <div class="stars"></div>
+
+    <!-- Hidden Audio Player -->
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Start Screen -->
+    <div class="start-screen" id="startScreen">
+        <button class="start-btn" onclick="startExperience()">Tap to read a secret ❤️</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content" id="mainContent">
+        <div class="line title">Tumse Ek Baat Kehni Hai 😊</div>
+        
+        <div class="line">Main shayad tumhare saamne<br>apni feelings ko<br>utna express nahi kar pata.</div>
+        
+        <div class="line">Kabhi words nahi milte, kabhi sharm aa jaati hai,<br>aur kabhi darr lagta hai ki tum meri feelings ko<br>waise samjhogi bhi ya nahi. ❤️‍🩹</div>
+        
+        <div class="line" style="font-style: italic; color: #a4b0be;">Lekin sach ye hai...</div>
+        
+        <div class="line">Tumhari presence<br>meri life mein bahut matter karti hai.</div>
+        
+        <div class="line">Tumse baat karne ke baad<br>chahe din kitna bhi difficult ho,<br>dil halka sa ho jaata hai. 🫶</div>
+        
+        <div class="line">Aur tumhari ek smile...<br>Pata nahi kyun,<br>mujhe andar tak khush kar deti hai. 😊</div>
+        
+        <div class="line" style="color: #ced6e0;">Shayad main tumhe har roz nahi bataunga...<br>Lekin tum mere liye<br>har roz special rahogi.</div>
+        
+        <div class="line" style="font-size: 20px; font-weight: bold; color: #ff6b81; margin-top: 50px;">
+            Aur haan, tumhari smile ki wajah banna<br>mujhe hamesha pasand rahega.✨
+        </div>
+    </div>
+
+    <script>
+        function startExperience() {
+            // Play Music
+            const music = document.getElementById('bgMusic');
+            music.volume = 0.5; // Set volume to 50% so it's soothing
+            music.play();
+
+            // Hide start screen
+            const startScreen = document.getElementById('startScreen');
+            startScreen.style.opacity = '0';
+            setTimeout(() => {
+                startScreen.style.display = 'none';
+                
+                // Show content
+                const content = document.getElementById('mainContent');
+                content.style.display = 'block';
+
+                // Animate lines one by one
+                const lines = document.querySelectorAll('.line');
+                lines.forEach((line, index) => {
+                    setTimeout(() => {
+                        line.classList.add('fade-in');
+                    }, index * 2500); // 2.5 seconds gap between each line
+                });
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
