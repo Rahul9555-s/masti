@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ek Aakhri Baat... 💔</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: #09090b; /* Deep dark aesthetic */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            color: #e4e4e7;
+            overflow-x: hidden;
+        }
+
+        /* Subtle glowing background elements */
+        .glow-circle {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .glow-1 { width: 400px; height: 400px; background: #9f1239; top: -100px; left: -100px; }
+        .glow-2 { width: 300px; height: 300px; background: #4c1d95; bottom: -50px; right: -50px; }
+
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: #f43f5e;
+            margin-bottom: 40px;
+            z-index: 10;
+            text-align: center;
+            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Modern Grid Layout */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        /* Glassmorphism Card Style */
+        .modern-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 35px 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .modern-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(244, 63, 94, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(244, 63, 94, 0.1);
+        }
+
+        .card-icon {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #f43f5e;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #a1a1aa;
+            font-weight: 300;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* Special Full-Width Shayari Card */
+        .shayari-card {
+            grid-column: 1 / -1; /* Spans across all columns */
+            background: linear-gradient(145deg, rgba(159, 18, 57, 0.1), rgba(0,0,0,0.4));
+            border-left: 3px solid #f43f5e;
+            text-align: center;
+            padding: 50px 30px;
+        }
+
+        .shayari-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            line-height: 2.2;
+            color: #e4e4e7;
+        }
+
+        .footer-promise {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #f43f5e;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Glowing Orbs -->
+    <div class="glow-circle glow-1"></div>
+    <div class="glow-circle glow-2"></div>
+
+    <h1 class="header-title">Ek Aakhri Baat...</h1>
+
+    <div class="cards-grid">
+        
+        <!-- Card 1 -->
+        <div class="modern-card">
+            <div class="card-icon">😔</div>
+            <div class="card-title">Meri Niyat</div>
+            <div class="card-text">
+                Main kabhi bhi nahi chahta ki aapko pareshan karu, aapko gussa dilau ya aapko sad karu. Hamesha bas yahi sochta hu ki aapke face par smile aaye, aur main bas wo smile dekhne ke chakkar mein kuch na kuch karta rehta hu...
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="modern-card">
+            <div class="card-icon">🥀</div>
+            <div class="card-title">Meri Galtiyan</div>
+            <div class="card-text">
+                Jaane-anjaane mein mujhse na aisi galti ho hi jati hai jisse aap irritate ho jate ho aur main aapko gussa dila deta hu. At-least <span class="highlight">mujhe daat kar apna gussa nikal liya karo...</span>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="modern-card">
+            <div class="card-icon">🤝</div>
+            <div class="card-title">Genuinely Bestie</div>
+            <div class="card-text">
+                Mujhe pata hai hum zabardasti kisi ke dost nahi ban sakte. Aapko trust issue hona common baat hai, lekin main kabhi koi drama ya dikhawa nahi karta, dil se bestie manta hu.
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="modern-card">
+            <div class="card-icon">🥺</div>
+            <div class="card-title">Mera Bachpana</div>
+            <div class="card-text">
+                Aap sochte hoge bachpana hai mujhme... aisa nahi hai, main mature hi hu bahut. Pata nahi kyun <span class="highlight">sirf aur sirf aapke saamne itna bacha sa ban gaya hu.</span> Darta hu ki dosti kharab na ho jaye.
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="modern-card">
+            <div class="card-icon">❤️‍🩹</div>
+            <div class="card-title">Fikr Aur Maafi</div>
+            <div class="card-text">
+                Mujhe farq padta hai aapke gussa hone se... aapke sad hone se. I know meri harkatein aapko bahut irritating lagti hain. <span class="highlight">Sorry Mam...</span>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="modern-card">
+            <div class="card-icon">🚶‍♂️</div>
+            <div class="card-title">No More Force</div>
+            <div class="card-text">
+                Ab main aapko force nahi karunga ki mujhse dosti karo. Pata hai... waise hota hi hai aksar mere sath (hassi bhi aati hai mujhe khud par)... mujhse pareshan hokar sab bhagte hain hehehe...
+            </div>
+        </div>
+
+        <!-- Card 7 : The Shayari (Full Width) -->
+        <div class="modern-card shayari-card">
+            <div class="card-title" style="margin-bottom: 25px;">Meri Aakhri Shayari</div>
+            <div class="shayari-text">
+                "Bahut udas hai koi... tere chup ho jaane se...<br>
+                Ho sake to baat kar le... mujhse koi bahaane se...<br><br>
+                Tu laakh khafa hi sahi... magar itna to dekh...<br>
+                Koi toot rha hai... tere rooth jaane se...."
+            </div>
+        </div>
+
+        <!-- Footer Card -->
+        <div class="footer-promise">
+            My bestie, I am always there... <br>
+            Poore haq se bulao jab mann kare, haq jatao. ❤️
+        </div>
+
+    </div>
+
+</body>
+</html>
