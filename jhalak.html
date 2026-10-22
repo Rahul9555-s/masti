@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is for you... ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 40px 20px;
+        }
+
+        /* Animated Background Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.5;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+        
+        .orb-1 { width: 350px; height: 350px; background: #ff4757; top: -50px; left: -50px; }
+        .orb-2 { width: 450px; height: 450px; background: #3742fa; bottom: -100px; right: -50px; animation-delay: -5s; }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(50px) scale(1.1); }
+        }
+
+        /* Main Heading */
+        .main-heading {
+            font-size: 3rem;
+            font-weight: 600;
+            background: linear-gradient(#ff9a9e, #fecfef);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            z-index: 10;
+            text-align: center;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Card Container (Grid Layout) */
+        .cards-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            z-index: 10;
+            max-width: 1300px;
+            margin-bottom: 60px;
+        }
+
+        /* Individual 3D Card */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            color: #ffffff;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            transform: translateZ(50px);
+            display: inline-block;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ff6b81;
+            margin-bottom: 15px;
+            transform: translateZ(40px);
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            transform: translateZ(30px);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .highlight {
+            color: #ff9a9e;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        /* Interactive Smile Check Section */
+        .smile-check-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 10;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .smile-question {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .buttons-area {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            min-height: 60px;
+            position: relative;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-yes {
+            background: #ff4757;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .btn-yes:hover {
+            background: #ff6b81;
+            transform: scale(1.05);
+        }
+
+        .btn-no {
+            background: #7f8c8d;
+            color: white;
+            position: relative; /* Needed for moving */
+        }
+
+        #successMessage {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #ff9a9e;
+            font-weight: 600;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <h1 class="main-heading">This is for you... ❤️</h1>
+
+    <div class="cards-wrapper">
+        
+        <!-- Card 1 to 8 (Existing ones) -->
+        <div class="card">
+            <div class="card-icon">🌠</div>
+            <div class="card-title">Kaisi Yeh Aadat?</div>
+            <div class="card-text">Mujhe sach mein nahi pata ki aap kab mere liye itne zaroori ban gaye. Hamari un chhoti-chhoti baaton ke beech, aap chupke se meri aadat ban gaye.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">👀</div>
+            <div class="card-title">Ek Jhalak</div>
+            <div class="card-text">"Ek jhalak ke liye kaun tarasta hai?" Log kehte the... jab tak meri baari nahi aayi thi. Ab ek nazar aapko dekhne ke liye bhi dil bechain rehne lagta hai.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">✨</div>
+            <div class="card-title">Aankhein Aur Smile</div>
+            <div class="card-text">Aapki wo masoom si <span class="highlight">aankhein</span>... unme dekh kar ek alag hi sukoon milta hai. Aur aapki wo <span class="highlight">smile</span>? Uff... mera poora din khubsurat bana deti hai.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🎵</div>
+            <div class="card-title">Tumhari Awaaz</div>
+            <div class="card-text">Kabhi notice kiya hai? Jab din bahut kharab jaa raha ho aur achanak aapki awaaz sunne ko mil jaye... toh lagta hai jaise sab theek ho gaya. Best therapy ever!</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">💭</div>
+            <div class="card-title">Sirf Tumhara Khayal</div>
+            <div class="card-text">Pata nahi din bhar mein kitni baar aapka khayal aata hai. Kuch bhi achha hota hai ya bura, sabse pehle phone utha kar aapko hi batane ka mann karta hai.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🤝</div>
+            <div class="card-title">Meri Safe Space</div>
+            <div class="card-text">Duniya ke liye shayad hum dost hain, par mere liye aap ek aisi safe space ho jiske paas main bina kisi darr ke apni saari baten share kar sakta hu.</div>
+        </div>
+
+        <!-- NEW CARD 9: The Apology Tax -->
+        <div class="card">
+            <div class="card-icon">🍕</div>
+            <div class="card-title">Apology Tax</div>
+            <div class="card-text">
+                Agar abhi bhi thoda sa gussa baaki hai, toh bata do aaj kya khana hai? Momos, Pizza ya Chocolate? Galti meri thi toh bill bhi mera hi hoga! 💸
+            </div>
+        </div>
+
+        <!-- NEW CARD 10: The Truth -->
+        <div class="card">
+            <div class="card-icon">🤭</div>
+            <div class="card-title">Sachai</div>
+            <div class="card-text">
+                Pata hai sabse pyari cheez kya hai? Jab aap gussa hone ka natak karti ho par achanak se has deti ho. Wahi smile dekhne ke liye toh yeh sab banaya hai!
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FUNNY INTERACTIVE SECTION -->
+    <div class="smile-check-container">
+        <div class="smile-question">Kya Madam Ji apne dost se khush toh hai na? 🥺</div>
+        <div class="buttons-area">
+            <button class="btn btn-yes" onclick="sheSmiled()">Haan! 💖</button>
+            <button class="btn btn-no" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">Nahi 😡</button>
+        </div>
+        <div id="successMessage">
+            Yayyy! Mission Successful! ✨<br><br>
+            <span style="font-size: 1.1rem; color: #fff; line-height: 1.8;">
+                Ab jaldi se Insta par message karo aur bolo:<br>
+                <b style="color: #ffc312; font-size: 1.3rem;">"Haye kitna pyara dost hai!" 🤭</b>
+            </span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // 3D Tilt Logic for Multiple Cards
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -15; 
+                const rotateY = ((x - centerX) / centerX) * 15;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                card.style.transition = "none";
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                card.style.transition = "transform 0.5s ease";
+            });
+            
+            // Touch support for Mobile
+            card.addEventListener('touchmove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const touch = e.touches[0];
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -15; 
+                const rotateY = ((x - centerX) / centerX) * 15;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                card.style.transition = "none";
+            });
+
+            card.addEventListener('touchend', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                card.style.transition = "transform 0.5s ease";
+            });
+        });
+
+        // Runaway Button Logic
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * 250 - 125; // Moves left or right fast
+            const y = Math.random() * 150 - 75;  // Moves up or down fast
+            
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+            btn.style.transition = "transform 0.2s ease"; // Quick dodge animation
+        }
+
+        // Yes Button Logic (Rain of Emojis & Secret Message)
+        function sheSmiled() {
+            document.getElementById('noBtn').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Emojis for the rain
+            const emojis = ['😊', '🤗', '💖', '❤️', '🥰'];
+            
+            // Create 50 emojis dropping down
+            for(let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    let emoji = document.createElement('div');
+                    emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.style.position = 'fixed';
+                    emoji.style.left = Math.random() * 100 + 'vw';
+                    emoji.style.top = '-50px';
+                    emoji.style.fontSize = (Math.random() * 20 + 20) + 'px'; // Random sizes
+                    emoji.style.zIndex = '9999';
+                    emoji.style.pointerEvents = 'none'; // So they don't block clicks
+                    emoji.style.transition = 'top ' + (Math.random() * 3 + 2) + 's linear, transform ' + (Math.random() * 3 + 2) + 's';
+                    
+                    document.body.appendChild(emoji);
+                    
+                    // Small delay to allow CSS to register the starting top position before moving it down
+                    setTimeout(() => {
+                        emoji.style.top = '120vh';
+                        emoji.style.transform = 'rotate(' + (Math.random() * 720 - 360) + 'deg)';
+                    }, 50);
+                    
+                    // Clean up emojis after they fall
+                    setTimeout(() => emoji.remove(), 5000);
+                }, i * 60); // Drops one after another continuously
+            }
+        }
+    </script>
+</body>
+</html>
