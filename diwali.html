@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Diwali ✨</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;600&display=swap');
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        min-height: 100vh;
+        background: radial-gradient(circle at center, #1a0b2e 0%, #050114 100%);
+        font-family: 'Poppins', sans-serif;
+        color: #fff;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background 2s ease-in-out;
+    }
+
+    body.lit {
+        background: radial-gradient(circle at bottom, #4a192c 0%, #291238 40%, #0a0518 100%);
+    }
+
+    #stars {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .container {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        width: 90%;
+        max-width: 650px;
+        padding: 40px 25px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 215, 0, 0.1);
+        border-radius: 30px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 40px rgba(0,0,0,0.5);
+        transition: all 1.5s ease;
+        margin: 40px 0;
+    }
+
+    body.lit .container {
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        box-shadow: 0 0 50px rgba(255, 165, 0, 0.15), inset 0 0 20px rgba(255, 215, 0, 0.05);
+        background: rgba(20, 10, 30, 0.6);
+    }
+
+    h1 {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(2.2rem, 6vw, 3.5rem);
+        color: #ffe6a0;
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 1s ease 0.5s;
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+
+    h2 {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
+        color: #ff9d6c;
+        margin-bottom: 30px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 1s ease 0.8s;
+    }
+
+    body.lit h1, body.lit h2 {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .center-diya {
+        width: 80px;
+        height: 80px;
+        margin: 20px auto;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .center-diya:hover {
+        transform: scale(1.1);
+    }
+
+    .diya-base {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 30px;
+        background: linear-gradient(135deg, #cc5500, #8b4513);
+        border-radius: 10px 10px 40px 40px;
+        box-shadow: inset 0 -5px 10px rgba(0,0,0,0.5);
+    }
+
+    .flame {
+        position: absolute;
+        bottom: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 35px;
+        background: #fff;
+        border-radius: 50% 50% 20% 20%;
+        box-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900, 0 0 60px #ff3300;
+        opacity: 0.2;
+        transition: all 1s ease;
+    }
+
+    body.lit .flame {
+        opacity: 1;
+        animation: flicker 1s infinite alternate;
+    }
+
+    @keyframes flicker {
+        0% { transform: translateX(-50%) scale(1) rotate(-2deg); box-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900; }
+        100% { transform: translateX(-50%) scale(1.1) rotate(2deg); box-shadow: 0 0 30px #ffcc00, 0 0 60px #ff9900, 0 0 80px #ff3300; }
+    }
+
+    .hint-text {
+        font-size: 0.9rem;
+        color: #888;
+        letter-spacing: 2px;
+        margin-top: 20px;
+        text-transform: uppercase;
+        animation: pulse 2s infinite;
+        transition: opacity 0.5s;
+    }
+
+    body.lit .hint-text {
+        opacity: 0;
+        pointer-events: none;
+        display: none;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+    }
+
+    .message-box {
+        margin-top: 30px;
+        padding: 0 10px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 1.5s ease 1.2s;
+    }
+
+    body.lit .message-box {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .message-content {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #fce8cc;
+        text-shadow: 0 0 5px rgba(255,255,255,0.1);
+        text-align: center;
+    }
+
+    .signature {
+        margin-top: 40px;
+        font-family: 'Cinzel', serif;
+        color: #ffb86c;
+        font-size: 1.3rem;
+    }
+
+    /* Secret Button & Extra Message */
+    .special-btn {
+        background: transparent;
+        border: 1px solid rgba(255, 184, 108, 0.5);
+        color: #ffb86c;
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.95rem;
+        cursor: pointer;
+        margin-top: 30px;
+        transition: all 0.3s ease;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    body.lit .special-btn {
+        opacity: 1;
+        pointer-events: auto;
+        transition-delay: 2.5s; /* Appears after reading the main text */
+    }
+
+    .special-btn:hover {
+        background: rgba(255, 184, 108, 0.15);
+        box-shadow: 0 0 15px rgba(255, 184, 108, 0.4);
+    }
+
+    .extra-message {
+        display: none;
+        margin-top: 30px;
+        font-size: 1.15rem;
+        color: #ff9d6c;
+        font-weight: 600;
+        line-height: 1.6;
+        text-shadow: 0 0 15px rgba(255, 157, 108, 0.6);
+        animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Sky Lanterns */
+    .lantern {
+        position: fixed;
+        width: 30px;
+        height: 45px;
+        background: radial-gradient(ellipse at center, #ffdb58 0%, #ff8c00 70%, #d2691e 100%);
+        border-radius: 10px 10px 15px 15px;
+        bottom: -50px;
+        z-index: 1;
+        opacity: 0;
+        box-shadow: 0 0 20px #ff8c00, inset 0 -5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .lantern::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 5px;
+        background: #333;
+        border-radius: 2px;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+        10% { opacity: 1; box-shadow: 0 0 30px #ffcc00; }
+        90% { opacity: 0.8; }
+        100% { transform: translateY(-120vh) rotate(15deg) scale(1.2); opacity: 0; }
+    }
+
+    /* Falling Hearts Animation */
+    .falling-heart {
+        position: fixed;
+        top: -10%;
+        font-size: 1.5rem;
+        animation: fall linear forwards;
+        z-index: 100;
+        pointer-events: none;
+    }
+
+    @keyframes fall {
+        to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<div class="container">
+    <h1>Happy Diwali</h1>
+    <h2>A Little Surprise... ✨</h2>
+    
+    <div class="center-diya" id="mainDiya" onclick="igniteMagic()">
+        <div class="flame"></div>
+        <div class="diya-base"></div>
+    </div>
+    
+    <div class="hint-text" id="hintText">Tap the Diya to light up</div>
+
+    <div class="message-box">
+        <div class="message-content">
+            Happy Diwali to my favourite… meri pasandida mahila mitra! ❤️🪔
+            <br><br>
+            Hope your day is as beautiful as your smile and your life is always filled with happiness, laughter and lots of love.
+            <br><br>
+            Waise, festival ki roshni toh har jagah hai, par aapki smile ki baat hi kuch aur hai. 😉 Aapki smile mein kuch toh baat hai… thodi zyada hi special lagti hai. Aur aapse baat ho jaaye toh din apne aap thoda aur achha ho jaata hai. 😊
+            <br><br>
+            Aap sirf meri ek achhi dost hi nahi, balki wo sukoon ho jahan main apni saari uljhane bhool jata hu. Meri sari bakwaas jhelne aur hamesha mujhe samajhne ke liye Shukriya.
+            <br><br>
+            Keep smiling and keep shining. Have a lovely Diwali! ❤️✨
+        </div>
+        
+        <button class="special-btn" id="specialBtn" onclick="showExtraSpecial()">Ek aakhiri baat...</button>
+        
+        <div class="extra-message" id="extraMessage">
+            "Duniya ke liye aaj Diwali hai, par sach kahu toh mere liye sabse bada gift aapka meri zindagi mein hona hai. Aap jaisi ho, bilkul waisi hi rehna. Kyunki aap sach mein sabse special ho!" ✨Keep Smiling ❤️
+        </div>
+
+        <div class="signature">- </div>
+    </div>
+</div>
+
+<script>
+    // Create twinkling stars background
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.style.position = 'absolute';
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.width = `${Math.random() * 3}px`;
+        star.style.height = star.style.width;
+        star.style.backgroundColor = '#fff';
+        star.style.borderRadius = '50%';
+        star.style.opacity = Math.random();
+        star.style.animation = `flicker ${2 + Math.random() * 3}s infinite alternate`;
+        starsContainer.appendChild(star);
+    }
+
+    let isLit = false;
+    
+    function igniteMagic() {
+        if (isLit) return;
+        isLit = true;
+        
+        document.body.classList.add('lit');
+        document.getElementById('hintText').style.display = 'none';
+        
+        setInterval(createLantern, 800);
+        for(let i=0; i<5; i++) setTimeout(createLantern, i*300);
+    }
+
+    function createLantern() {
+        const lantern = document.createElement('div');
+        lantern.classList.add('lantern');
+        lantern.style.left = `${10 + Math.random() * 80}%`;
+        lantern.style.animation = `floatUp ${8 + Math.random() * 7}s linear forwards`;
+        document.body.appendChild(lantern);
+        
+        setTimeout(() => {
+            lantern.remove();
+        }, 15000);
+    }
+
+    // New Function for the Secret Button Magic
+    function showExtraSpecial() {
+        document.getElementById('specialBtn').style.display = 'none';
+        document.getElementById('extraMessage').style.display = 'block';
+
+        // Create a magical rain of hearts and diyas
+        for(let i = 0; i < 40; i++) {
+            setTimeout(createHeart, i * 120);
+        }
+    }
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('falling-heart');
+        const elements = ['❤️', '✨', '💖', '🪔'];
+        heart.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        document.body.appendChild(heart);
+        
+        setTimeout(() => heart.remove(), 6000);
+    }
+</script>
+</body>
+</html>
