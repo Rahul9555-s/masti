@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahaani Shuru Se... ✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Satisfy&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fffcf9 0%, #f4e1d2 100%);
+            color: #4a4a4a;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-family: 'Satisfy', cursive;
+            font-size: 4rem;
+            color: #d35400;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(211, 84, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            max-width: 600px;
+        }
+
+        .scroll-indicator {
+            margin-top: 50px;
+            animation: bounce 2s infinite;
+            font-size: 2rem;
+            color: #d35400;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        /* Timeline CSS */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: rgba(211, 84, 0, 0.3);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 5px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        /* Timeline Dots */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -31px;
+            background: #fffcf9;
+            border: 4px solid #d35400;
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(211, 84, 0, 0.5);
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -31px;
+        }
+
+        .timeline-content {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 4px solid #d35400;
+        }
+
+        .timeline-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: #d35400;
+            font-weight: 600;
+        }
+
+        /* Quote Section inside Timeline */
+        .english-quote {
+            background: #2c3e50;
+            color: #ecf0f1;
+            border-top: 4px solid #e74c3c;
+        }
+
+        .english-quote p {
+            color: #ecf0f1;
+            font-family: 'Satisfy', cursive;
+            font-size: 1.4rem;
+        }
+
+        /* Promise Section */
+        .promise-list {
+            margin-top: 20px;
+            background: rgba(211, 84, 0, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .promise-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .promise-item input[type="checkbox"] {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            accent-color: #27ae60;
+            pointer-events: none;
+        }
+
+        /* Funny Thappad Button */
+        .funny-btn-container {
+            text-align: center;
+            margin-top: 25px;
+            min-height: 100px;
+            position: relative;
+        }
+
+        .funny-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+        .funny-msg {
+            display: none;
+            color: #d35400;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 15px;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* P.S. Note */
+        .ps-note {
+            max-width: 650px;
+            margin: 40px auto 100px;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px dashed #d35400;
+            border-radius: 15px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .ps-note.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ps-note p {
+            font-family: 'Satisfy', cursive;
+            font-size: 1.6rem;
+            color: #2c3e50;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .ps-note .joke {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            color: #e74c3c;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 20px; }
+            .timeline-item:nth-child(even) { left: 0%; }
+            .timeline-item::after { left: 21px; }
+            .timeline-item:nth-child(even)::after { left: 21px; }
+            .ps-note { width: 85%; padding: 25px; margin: 30px auto 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Kahaani Shuru Se...</h1>
+        <p>Kuch baatein jo Day 1 se dil mein thi, par kabhi keh nahi paaya. Aaj fursat se scroll kariyega... ✨</p>
+        <div class="scroll-indicator">⬇</div>
+    </div>
+
+    <div class="timeline">
+        <!-- Milestone 1 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Milestone 1: Day 1 & Aankhein 👀</h3>
+                <p>Jab madam ka biometric lagwaya, tabse hi mujhe aapki aankhein sabse alag lagi. Main usi time se un aankhon mein gumm ho gaya tha. Lekin mujhe pata tha ki aapne Chairman section mein join kiye hai...or ministry ki jack se aaye ho... main baat karne se darta tha aapse.</p>
+                <p>Aapne shayad kabhi notice nahi kiya hoga, par main aapko Day 1 se dekhta aa raha hu. Aapko smile karta dekh ek alag hi <span class="highlight">sukoon sa milta tha</span>. Door se hi dekh kar khush rehta tha aur sochta tha ki kya kabhi aapse baat hogi?</p>
+            </div>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Milestone 2: Bahaane aur Smile 💻</h3>
+                <p>Aise hi daily nikal jata tha. Fir jab aap Establishment mein shift hue, toh main jaan-bujh kar aata tha wahan, bas aapki smile dekhne. (Aur aapse request hai ab meri is nadaani par gussa mat ho jana!).</p>
+                <p>Kabhi Pawan ke PC ke bahaane, kabhi Dilip ke, toh kabhi Pushpa ke PC ke bahaane... main wahan zyada der tak rukta tha. Aur jab aap smile karte the toh bas <span class="highlight">dil garden garden ho jata tha!</span> 😍</p>
+            </div>
+        </div>
+
+        <!-- Milestone 3 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Milestone 3: The Number 📞</h3>
+                <p>Maine Insta par bhi dhoonda, nahi mili. Fir bhagwan ne meri sun li! File transfer karne ke liye Dilip ne aapko mera number share kar diya. And I was like <span class="highlight">Balle Balle!</span> 🕺</p>
+                <p>Maine jaan-bujh kar message kiya tha us time. Main toh bas wait kar raha tha ki aap kab mera number save karoge. Fir main status lagane laga ki kaash aap dekho. Shukar hai ye recruitment wala kaam shuru hua aur meri entry ho gayi.</p>
+            </div>
+        </div>
+
+        <!-- Milestone 4 -->
+        <div class="timeline-item">
+            <div class="timeline-content english-quote">
+                <h3>Milestone 4: Dil Ki Baat 💌</h3>
+                <p>"I got addicted to you so easily... attracted to you in ways I can't explain. I only want your attention."</p>
+                <p>"Thank you for being a part of my life... for the smiles you unknowingly gave me. Some people come into our lives and leave without changing anything. But you... you changed something in me, you made my ordinary days feel special."</p>
+            </div>
+        </div>
+
+        <!-- Milestone 5 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Milestone 5: The Reality (Aur Thappad!) 🖐️</h3>
+                <p>Main aapse kuch bhi expect nahi karta, bas aapki ek smile ke ilawa. I know my limits, toh aap tension mat lo. Ab toh aapne mujhe thappad bhi maar diya hai (waise sach batau bohot tez ka maara tha aapne! 😂).</p>
+                <p>Main bas wo smile laana chahta hu, isliye ulti-seedhi harkatein karta hu. Baaki main pagal nahi hu... aapki smile mere liye bohot matter karti hai. Kabhi kisi situation mein phas jao, bas ek baar yaad kar lena mujhe.</p>
+                
+                <!-- The Prank Button -->
+                <div class="funny-btn-container">
+                    <button id="thappadBtn" class="funny-btn">Ek aur thappad maarna hai? 🖐️</button>
+                    <p id="thappadMsg" class="funny-msg">Bas ek hi baar allowed tha Malkin, ab nahi khane wala main! 😂</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Milestone 6 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3 style="font-family: 'Satisfy', cursive; font-size: 2.2rem; color: #e74c3c;">Pasandida Mahila Mitrrrr ✨</h3>
+                <p>Main return mein kuch nahi mangta, bas mujhse doori mat banana. Meri koi baat buri lag jaye toh daat dena... mujhe thappad maar lena... <strong>lekin baat karna mat chhodna.</strong> 🌻</p>
+                
+                <!-- Checkboxes -->
+                <div class="promise-list">
+                    <label class="promise-item">
+                        <input type="checkbox" checked disabled>
+                        <span>I promise to never cross my limits.</span>
+                    </label>
+                    <label class="promise-item">
+                        <input type="checkbox" checked disabled>
+                        <span>I promise to always protect your smile.</span>
+                    </label>
+                    <label class="promise-item">
+                        <input type="checkbox" checked disabled>
+                        <span>I promise to always be your best friend.</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- P.S. Secret Note -->
+    <div class="ps-note observe-me">
+        <p>"Life me maine bht kuch khoya hai, aapko nahi khona chahta... Aapki smile se badh kar kuch bhi nahi hai.."...aapki ye pyari pyari eyes or aapki smile yhi toh dkhni hai bhs...inka deadly combination..me kaise btau apko....You are very special to me.</p>
+        <div class="joke">
+            Saala main aaj tak kisi ka favourite ya special nahi bana life me...<br>Pata nahi sabki aankhein kharab hain! 😂🤦‍♂️me ye web page bnata hu apko kaise lgte hai kbi review b dedo...
+        </div>
+    </div>
+
+    <script>
+        // Scroll Reveal Animation for Timeline Items and P.S. Note
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const items = document.querySelectorAll('.timeline-item, .observe-me');
+            items.forEach(item => {
+                observer.observe(item);
+            });
+        });
+
+        // Funny Thappad Button Logic
+        const thappadBtn = document.getElementById('thappadBtn');
+        const thappadMsg = document.getElementById('thappadMsg');
+        
+        let hoverCount = 0;
+
+        const fleeButton = (e) => {
+            if(hoverCount < 3) {
+                e.preventDefault();
+                const x = (Math.random() - 0.5) * 150; 
+                const y = (Math.random() - 0.5) * 80;
+                
+                thappadBtn.style.transform = `translate(${x}px, ${y}px)`;
+                thappadMsg.style.display = 'block';
+                hoverCount++;
+            } else {
+                thappadBtn.innerText = "Ab bas! Main bhag raha hu 🏃‍♂️💨";
+                thappadBtn.style.transform = `translate(0px, 0px)`;
+                thappadBtn.style.background = "#95a5a6";
+                thappadBtn.style.pointerEvents = "none";
+            }
+        };
+
+        thappadBtn.addEventListener('mouseover', fleeButton);
+        thappadBtn.addEventListener('touchstart', fleeButton);
+    </script>
+</body>
+</html>
