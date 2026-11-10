@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cielo - For Madam Ji ✨</title>
+    <style>
+        /* Beautiful Premium Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@1,500&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            color: #ecf0f1;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        /* 1. Twinkling Stars Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: twinkle infinite ease-in-out alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.1; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px #fff; }
+        }
+
+        /* 2. Glowing Moon */
+        .moon {
+            position: fixed;
+            top: 40px;
+            right: 50px;
+            width: 80px;
+            height: 80px;
+            background: #fdfbfb;
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.6), inset -15px -15px 25px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            opacity: 0;
+            animation: moonFadeIn 3s ease 1s forwards;
+        }
+
+        @keyframes moonFadeIn {
+            to { opacity: 0.9; }
+        }
+
+        /* 3. Shooting Stars */
+        .shooting-star {
+            position: fixed;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,1), transparent);
+            z-index: 2;
+            opacity: 0;
+            transform: rotate(-45deg);
+            animation: shoot infinite linear;
+        }
+
+        @keyframes shoot {
+            0% { transform: translateX(100vw) translateY(-20vh) rotate(-45deg); opacity: 1; }
+            5% { opacity: 1; }
+            20% { transform: translateX(-50vw) translateY(130vh) rotate(-45deg); opacity: 0; }
+            100% { transform: translateX(-50vw) translateY(130vh) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Glassmorphism Content Box */
+        .content-box {
+            position: relative;
+            z-index: 10;
+            max-width: 650px;
+            width: 100%;
+            padding: 45px 40px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardFadeIn 1.5s ease 0.5s forwards;
+        }
+
+        @keyframes cardFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #dcdde1;
+            margin-bottom: 22px;
+            font-weight: 300;
+        }
+
+        .highlight-cielo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #f5f6fa;
+            margin: 20px 0;
+            display: inline-block;
+            text-shadow: 0 0 18px rgba(255,255,255,0.4);
+            font-style: italic;
+        }
+
+        .special-note {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            color: #a4b0be;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
+        }
+
+        /* Fading text animations */
+        .fade-text {
+            opacity: 0;
+            animation: textReveal 2s ease forwards;
+        }
+
+        @keyframes textReveal {
+            to { opacity: 1; }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 2s; }
+        .delay-2 { animation-delay: 3.5s; }
+        .delay-3 { animation-delay: 5s; }
+        .delay-4 { animation-delay: 6.5s; }
+        .delay-5 { animation-delay: 8s; }
+        
+        /* Secret Button and Message */
+        .secret-btn-container {
+            margin-top: 30px;
+            min-height: 50px;
+        }
+
+        .secret-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 12px 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            animation: textReveal 2s ease forwards 9.5s; /* Appears after everything */
+        }
+
+        .secret-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .hidden-compliment {
+            display: none; /* Initially hidden from layout */
+            opacity: 0;    /* Initially transparent */
+            transition: opacity 1s ease, transform 1s ease;
+            font-size: 1.15rem;
+            color: #fdfbfb;
+            font-weight: 400;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 3px solid rgba(255, 255, 255, 0.5);
+            transform: translateY(10px);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .content-box { padding: 30px 20px; }
+            .highlight-cielo { font-size: 2.4rem; }
+            p { font-size: 1rem; }
+            .moon { width: 50px; height: 50px; top: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1 & 3: Background Stars and Shooting Stars -->
+    <div class="stars" id="stars-container"></div>
+    
+    <!-- 2: Glowing Moon -->
+    <div class="moon"></div>
+
+    <div class="content-box">
+        <p class="fade-text delay-1">
+            "Bestie" is cute, "Buddy" is nice, and "Dost" is okay and all.
+        </p>
+        
+        <p class="fade-text delay-2">
+            But you're more than just standard words to me.<br>
+            You're <span class="highlight-cielo">mi cielo</span>
+        </p>
+
+        <p class="fade-text delay-3">
+            In Spanish, <i>mi cielo</i> means "my heaven" or "my sky."<br>
+            It's a way to describe a bond so pure, it feels infinite.
+        </p>
+
+        <p class="fade-text delay-4">
+            A way of saying your presence brings so much calm; the peaceful sky above me, the place where I find sukoon when things get heavy.
+        </p>
+
+        <div class="special-note fade-text delay-5">
+            Put simply, it's the only phrase that even comes close to describing a true friend like you, Madam Ji. ✨
+        </div>
+
+        <!-- The Interactive Surprise -->
+        <div class="secret-btn-container">
+            <button id="revealBtn" class="secret-btn" onclick="showSecret()">Ek aakhri baat... 🤫</button>
+            
+            <div id="secretMessage" class="hidden-compliment">
+                "Vaise ek sach kahu? Aapki smile aur in chamakti aankhon mein ek aisi positivity aur sukoon hai, jo is poore aasmaan ke taaron mein bhi nahi hai. Isliye, yeh smile kabhi gayab nahi honi chahiye Madam Ji! 😊✨"
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const starsContainer = document.getElementById('stars-container');
+            
+            // Generate Twinkling Stars
+            const totalStars = 120;
+            for (let i = 0; i < totalStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = Math.random() * 2 + 1; // 1px to 3px
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                
+                star.style.animationDelay = `${Math.random() * 4}s`;
+                star.style.animationDuration = `${3 + Math.random() * 5}s`; 
+                
+                starsContainer.appendChild(star);
+            }
+
+            // Generate Shooting Stars
+            const totalShootingStars = 4;
+            for (let i = 0; i < totalShootingStars; i++) {
+                const shootingStar = document.createElement('div');
+                shootingStar.classList.add('shooting-star');
+                
+                // Randomize delay and duration so they don't fall together
+                shootingStar.style.animationDelay = `${Math.random() * 15}s`;
+                shootingStar.style.animationDuration = `${4 + Math.random() * 3}s`;
+                // Start a bit higher or lower randomly
+                shootingStar.style.top = `${Math.random() * 50 - 20}vh`; 
+                
+                starsContainer.appendChild(shootingStar);
+            }
+        });
+
+        // Function to reveal the hidden compliment
+        function showSecret() {
+            const btn = document.getElementById('revealBtn');
+            const msg = document.getElementById('secretMessage');
+            
+            // Remove button
+            btn.style.display = 'none';
+            
+            // Show message
+            msg.style.display = 'block';
+            
+            // Small timeout to allow display:block to render before changing opacity for transition effect
+            setTimeout(() => {
+                msg.style.opacity = '1';
+                msg.style.transform = 'translateY(0)';
+            }, 50);
+        }
+    </script>
+</body>
+</html>
