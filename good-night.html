@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Night Madam Ji 🌙✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Satisfy&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at bottom, #1a2a6c, #112 100%);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* Starry Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px #fff; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+            max-width: 550px;
+            width: 90%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .greeting {
+            font-family: 'Satisfy', cursive;
+            color: #f1c40f;
+            font-size: 3.5rem;
+            margin-bottom: 5px;
+            text-shadow: 0 0 20px rgba(241, 196, 15, 0.5);
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        /* The Special Note */
+        .special-note {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid #f1c40f;
+            padding: 20px 25px;
+            border-radius: 0 15px 15px 0;
+            margin: 25px 0;
+            opacity: 0;
+            backdrop-filter: blur(5px);
+            animation: fadeInLeft 1.2s ease 0.6s forwards;
+            text-align: left;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .special-note p {
+            color: #ecf0f1;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .special-note p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-text {
+            color: #f1c40f;
+            font-weight: 600;
+        }
+
+        /* Polaroid Photo Frame */
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            border-radius: 5px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            transform: rotate(-3deg);
+            margin: 30px auto 40px auto;
+            width: 260px;
+            opacity: 0;
+            animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.5s forwards;
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            border-radius: 3px;
+            display: block;
+        }
+
+        .polaroid-caption {
+            color: #2c3e50;
+            font-family: 'Satisfy', cursive;
+            font-size: 1.4rem;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* Reply Buttons */
+        .reply-section {
+            opacity: 0;
+            animation: fadeInUp 1s ease 2s forwards;
+            transition: opacity 0.5s ease;
+        }
+
+        .reply-title {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            border-color: #f1c40f;
+            box-shadow: 0 5px 15px rgba(241, 196, 15, 0.2);
+        }
+
+        .btn span {
+            font-size: 1.2rem;
+            margin-right: 8px;
+        }
+
+        /* Secret Success Message */
+        #secret-success {
+            display: none;
+            color: #f1c40f;
+            font-family: 'Satisfy', cursive;
+            font-size: 2.2rem;
+            margin-top: 30px;
+            animation: popIn 0.8s ease forwards;
+            text-shadow: 0 0 15px rgba(241, 196, 15, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="stars" id="stars-container"></div>
+
+    <div class="container">
+        <h1 class="greeting">Good Night! 🌙</h1>
+        
+        <div class="special-note">
+            <p>Din bhar office ka itna stress, daily ki bhaag-daud aur duniya bhar ki tension... pata hai kabhi-kabhi bohot tiring hota hai. Par aap sab kuch itne gracefully handle karti ho!</p>
+            <p>Aap bohot amazing ho Madam Ji. Meri koshish bas itni hai ki din khatam hote-hote main apni pasandida mahila mitr ko yaad dila saku ki <span class="highlight-text">aap is dost ke liye sach mein bohot special ho.</span> ✨</p>
+            <p>Sone se pehle saari pareshaniyan side mein rakh dena, kyunki aapko ek sukoon bhari neend ki bohot zaroorat hai.</p>
+            <p style="font-style: italic; font-size: 0.95rem; color: #bdc3c7; margin-top: 10px;">(Aur haan, relax... isme koi umeed nahi chhupi hai, bas us pyari si smile ki koshish hai jo main hamesha aapke face par dekhna chahta hu! 😊)</p>
+        </div>
+
+        <!-- Image provided by user -->
+        <div class="polaroid">
+            <img src="WhatsApp Image 2026-11-13 at 9.04.49 PM.jpeg" alt="Special Click for Madam Ji">
+            <div class="polaroid-caption">Good Night Madam Ji! ✨</div>
+        </div>
+
+        <!-- The buttons she sees -->
+        <div class="reply-section" id="buttons-section">
+            <div class="reply-title">compliment doge ya gali....insta p krna reply kro toh..secret message hai inme👇</div>
+            
+            <button class="btn" onclick="captureResponseSilent('Smile aa gayi! 🌻')">
+                <span>🌻</span> Smile aa gayi! Ab so jao.
+            </button>
+            
+            <button class="btn" onclick="captureResponseSilent('Pic achi hai 😛')">
+                <span>😛</span> Pic achi hai! Good night.
+            </button>
+            
+            <button class="btn" onclick="captureResponseSilent('Kal office mein milte hain ✨')">
+                <span>✨</span> Ahm Ahm mere dost ko mere alawa kisi or ki najar na lage.... 
+            </button>
+        </div>
+
+        <!-- The message she sees AFTER clicking -->
+        <div id="secret-success">
+            Aapk smile bht pyari hai bilkul apki trh! <br>Good Night 🌙
+        </div>
+    </div>
+
+    <script>
+        // Generate Starry Background
+        const starsContainer = document.getElementById('stars-container');
+        for (let i = 0; i < 70; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 3 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.animationDuration = Math.random() * 3 + 2 + 's';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Silent Email Function
+        function captureResponseSilent(replyText) {
+            // 1. Hide buttons and show cute success message
+            document.getElementById('buttons-section').style.display = 'none';
+            document.getElementById('secret-success').style.display = 'block';
+
+            // 2. Secretly send data to your CORRECT email using FormSubmit AJAX
+            fetch("https://formsubmit.co/ajax/rahul.bhirman57@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    "Subject": "Madam Ji clicked a reply! ✨",
+                    "Madam_Ji_Reaction": replyText,
+                    "_captcha": "false"
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log("Silent email triggered"))
+            .catch(error => console.log("Error processing"));
+        }
+    </script>
+</body>
+</html>
