@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 Breaking News: Missing Smile!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Poppins:ital,wght@0,400;1,600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff9a9e,
+                #ff9a9e 10px,
+                #fecfef 10px,
+                #fecfef 20px
+            );
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+        }
+
+        .alert-card {
+            background: #ffffff;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+            border: 4px solid #ff4757;
+            animation: slideIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes slideIn {
+            0% { transform: scale(0.8) translateY(50px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .alert-header {
+            background: #ff4757;
+            color: white;
+            padding: 20px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .siren {
+            animation: flash 1s infinite alternate;
+        }
+
+        @keyframes flash {
+            from { opacity: 0.5; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1.1); }
+        }
+
+        .content {
+            padding: 30px 20px;
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 15px;
+            text-align: left;
+            background: #f1f2f6;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #2f3542;
+        }
+
+        .label {
+            font-weight: 800;
+            color: #2f3542;
+            font-size: 0.95rem;
+        }
+
+        .value {
+            color: #57606f;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .crime-highlight {
+            color: #ff4757;
+            font-size: 1.1rem;
+            font-style: italic;
+            margin: 20px 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .fix-btn {
+            background: #2ed573;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(46, 213, 115, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .fix-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 20px rgba(46, 213, 115, 0.4);
+            background: #26de81;
+        }
+
+        .success-screen {
+            display: none;
+            padding: 40px 20px;
+        }
+
+        .success-screen h2 {
+            color: #2ed573;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .success-screen p {
+            color: #2f3542;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Floating emojis for success */
+        .magic-emoji {
+            position: absolute;
+            font-size: 2.5rem;
+            pointer-events: none;
+            animation: floatUp 2.5s ease-in-out forwards;
+            opacity: 0;
+            z-index: 20;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(50vh) scale(0.5) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5) rotate(45deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="alert-card" id="mainCard">
+        
+        <!-- Default Alert View -->
+        <div id="alertView">
+            <div class="alert-header">
+                <span class="siren">🚨</span> EMERGENCY ALERT <span class="siren">🚨</span>
+            </div>
+            
+            <div class="content">
+                <div class="report-grid">
+                    <div class="label">FIR NO:</div>
+                    <div class="value">420-SMILE-MISSING</div>
+                    
+                    <div class="label">SUSPECT:</div>
+                    <div class="value">Sonia Ji (The Boss) ✨</div>
+                    
+                    <div class="label">STATUS:</div>
+                    <div class="value">Looking extremely beautiful today 💖</div>
+                </div>
+
+                <div class="crime-highlight">
+                    "Crime: Aaj hadd se zyada sundar lag rahi hain, par unki sabse keemti cheez—unki Smile—missing hai! Isse aas-paas ke logon (yani mujhe) tension ho rahi hai!"
+                </div>
+
+                <p style="color: #747d8c; font-size: 0.9rem; margin-bottom: 20px;">
+                    Please is case ko jaldi solve karein, warna saara din kharab jayega!
+                </p>
+
+                <button class="fix-btn" onclick="solveCase()">Case Close Karo! (I'm Smiling) 😊</button>
+            </div>
+        </div>
+
+        <!-- Success View (Hidden initially) -->
+        <div id="successView" class="success-screen">
+            <h2>✨ Case Closed! ✨</h2>
+            <p>Smile detected! <br>Ab hui na baat! Ye smile aise hi rehni chahiye poora din, varna chalaan fir se katt jayega! 🌻</p>
+        </div>
+
+    </div>
+
+    <script>
+        function solveCase() {
+            // Hide alert view, show success view
+            document.getElementById('alertView').style.display = 'none';
+            document.getElementById('successView').style.display = 'block';
+            
+            // Change border color to green
+            document.getElementById('mainCard').style.borderColor = '#2ed573';
+
+            // Throw emojis
+            const emojis = ['😍', '✨', '🌻', '😂', '💖', '😊'];
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.classList.add('magic-emoji');
+                    emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                    
+                    emoji.style.left = Math.random() * 100 + 'vw';
+                    document.body.appendChild(emoji);
+                    
+                    setTimeout(() => {
+                        emoji.remove();
+                    }, 2500);
+                }, i * 80);
+            }
+        }
+    </script>
+</body>
+</html>
